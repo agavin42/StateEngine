@@ -15,4 +15,9 @@ public class StateB : State
 	{
 		Param1 = param1;
 	}
+
+	public override void Trans()
+	{
+		Go(new StateA());
+	}
 }

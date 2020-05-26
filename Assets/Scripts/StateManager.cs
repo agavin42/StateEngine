@@ -17,7 +17,16 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         if (Current != null) {
-        	Current.Update();
+        	try
+        	{
+        		Current.Trans();
+             	Current.Update();
+        	}
+        	catch (State.StateGoException e)
+        	{
+        		Go(e.NewState);
+        		Update();	// Update again so the new state logic gets called
+        	}
         }
     }
 
@@ -25,7 +34,13 @@ public class StateManager : MonoBehaviour
     {
     	Previous = Current;
     	Current = state;
+    	if (Previous!=null)
+    	{
+    		Previous.Exit();
+    	}
+
     	Current.Start(this);
+    	Current.Enter();
     	Debug.Log(gameObject.name + " enter State: " + state.ToString());
     }
 }

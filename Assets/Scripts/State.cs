@@ -8,6 +8,17 @@ public class State
 	StateManager Manager;
 	float StartTime;
 
+	public class StateGoException : System.Exception
+	{
+		public State NewState;
+
+		public StateGoException (State new_state) : base()
+		{
+			NewState = new_state;
+		}
+	}
+
+
 	public State() {}
 
 	public void Start(StateManager manager)
@@ -16,12 +27,25 @@ public class State
 		StartTime = Time.time;		
 	}
 
-	public State Trans()
+	public void Go (State new_state)
 	{
-		return null;
+		throw new StateGoException(new_state);
 	}
 
-	public void Update()
+
+	public virtual void Enter()
+	{
+	}
+
+	public virtual void Exit()
+	{
+	}
+
+	public virtual void Trans()
+	{
+	}
+
+	public virtual void Update()
 	{
 	}
 }
