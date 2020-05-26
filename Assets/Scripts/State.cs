@@ -32,6 +32,7 @@ public class State
 		throw new StateGoException(new_state);
 	}
 
+	// generic tests if we are in a particular state type, or have inherieted from it
 	public bool StateP<T1>()
 	{
 		return typeof(T1).IsAssignableFrom(this.GetType());
@@ -44,6 +45,25 @@ public class State
 	{
 		return typeof(T1).IsAssignableFrom(this.GetType()) || typeof(T2).IsAssignableFrom(this.GetType()) || typeof(T3).IsAssignableFrom(this.GetType());
 	}
+
+	// amount of time we have been in this state
+	public float StateTime()
+	{
+		return Time.time - StartTime;
+	}
+
+	// the previous state object
+	public State PrevState()
+	{
+		return Manager.Previous;
+	}
+
+	// generic tests about state type, but for the previous state
+	public bool PrevStateP<T1>()
+	{
+		return Manager.Previous && typeof(T1).IsAssignableFrom(Manager.Previous.GetType());
+	}
+
 
 
 	public virtual void Enter()
