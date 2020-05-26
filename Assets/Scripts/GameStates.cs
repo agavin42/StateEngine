@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class StateA : State
 {
+	public override void Enter()
+	{
+		Debug.Log("is A " + StateP<StateA>());
+	}
+
 }
 
 public class StateB : State
@@ -14,6 +19,11 @@ public class StateB : State
 	public StateB(int param1)
 	{
 		Param1 = param1;
+	}
+
+	public override void Enter()
+	{
+		Debug.Log("is A/B " + StateP<StateA, StateB>());
 	}
 
 	public override void Trans()

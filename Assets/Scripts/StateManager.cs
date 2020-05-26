@@ -13,6 +13,11 @@ public class StateManager : MonoBehaviour
         Go(new StateB(1));
     }
 
+	public bool StateP<T1>()
+	{
+		return Current!=null && typeof(T1).IsAssignableFrom(Current.GetType());
+	}
+
     // Update is called once per frame
     void Update()
     {
@@ -40,7 +45,7 @@ public class StateManager : MonoBehaviour
     	}
 
     	Current.Start(this);
-    	Current.Enter();
-    	Debug.Log(gameObject.name + " enter State: " + state.ToString());
+      	Debug.Log(gameObject.name + " enter State: " + state.ToString());
+	  	Current.Enter();
     }
 }

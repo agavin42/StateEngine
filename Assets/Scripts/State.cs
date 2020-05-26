@@ -32,6 +32,19 @@ public class State
 		throw new StateGoException(new_state);
 	}
 
+	public bool StateP<T1>()
+	{
+		return typeof(T1).IsAssignableFrom(this.GetType());
+	}
+	public bool StateP<T1, T2>()
+	{
+		return typeof(T1).IsAssignableFrom(this.GetType()) || typeof(T2).IsAssignableFrom(this.GetType());
+	}
+	public bool StateP<T1, T2, T3>()
+	{
+		return typeof(T1).IsAssignableFrom(this.GetType()) || typeof(T2).IsAssignableFrom(this.GetType()) || typeof(T3).IsAssignableFrom(this.GetType());
+	}
+
 
 	public virtual void Enter()
 	{
