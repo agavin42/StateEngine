@@ -61,9 +61,14 @@ public class State
 	// generic tests about state type, but for the previous state
 	public bool PrevStateP<T1>()
 	{
-		return Manager.Previous && typeof(T1).IsAssignableFrom(Manager.Previous.GetType());
+		return (Manager.Previous!=null) && typeof(T1).IsAssignableFrom(Manager.Previous.GetType());
 	}
 
+	// check's the MANAGER's current state, which can be used in an exit to check where we are going
+	public bool NextStateP<T1>()
+	{
+		return (Manager.Current!=null) && typeof(T1).IsAssignableFrom(Manager.Current.GetType());
+	}
 
 
 	public virtual void Enter()

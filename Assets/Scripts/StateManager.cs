@@ -15,7 +15,7 @@ public class StateManager : MonoBehaviour
 
 	public bool StateP<T1>()
 	{
-		return Current!=null && typeof(T1).IsAssignableFrom(Current.GetType());
+		return (Current!=null) && typeof(T1).IsAssignableFrom(Current.GetType());
 	}
 
     // Update is called once per frame
