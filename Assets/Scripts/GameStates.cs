@@ -16,6 +16,11 @@ public class StateB : State
 {
 	int Param1;
 
+	public StateB()
+	{
+		Param1 = 10;
+	}
+
 	public StateB(int param1)
 	{
 		Param1 = param1;

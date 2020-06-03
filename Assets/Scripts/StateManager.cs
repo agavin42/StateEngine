@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +7,20 @@ public class StateManager : MonoBehaviour
 {
 	public State Current = null;
 	public State Previous = null;
+	public string InitialState = "StateA";
 
     // Start is called before the first frame update
     void Start()
     {
-        Go(new StateB(1));
+    	Type t = Type.GetType(InitialState);
+    	if (t!=null) {
+	    	State s = Activator.CreateInstance(t) as State;
+	    	if (s!=null) {
+	          Go(s);  		
+	    	}
+	    } else {
+      		Debug.Log(gameObject.name + " unknown InitialState: " + InitialState);	    	
+	    } 
     }
 
 	public bool StateP<T1>()
