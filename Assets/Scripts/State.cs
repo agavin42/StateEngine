@@ -71,18 +71,27 @@ public class State
 	}
 
 
+
+	// Functions to override
+
+	// Called anytime when a state in entered
 	public virtual void Enter()
 	{
 	}
 
+	// Called whenever you leave a state
 	public virtual void Exit()
 	{
 	}
 
+	// Called first in the update for the current state.
+	// Intended to rules to test for transitions to new states.
+	// Called immediately on going to a new state
 	public virtual void Trans()
 	{
 	}
 
+	// The generic update function for the current state
 	public virtual void Update()
 	{
 	}
