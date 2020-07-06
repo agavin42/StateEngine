@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class State
 {
-	StateManager Manager;
-	float StartTime;
+	protected StateManager Manager;
+	protected float StartTime;
 
 	public class StateGoException : System.Exception
 	{
